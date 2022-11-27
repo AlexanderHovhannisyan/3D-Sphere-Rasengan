@@ -1,0 +1,165 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background: linear-gradient(black,rgb(28, 28, 28),rgb(17, 17, 17));
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+}
+
+.container{
+    width: 450px;
+    height: 450px;
+    perspective: 10000px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgb(171, 255, 255);
+    transform: rotate(0deg);
+    box-shadow: 0 0 20px aqua, 0 0 50px rgba(0, 255, 145, 0.627), 0 0 100px rgba(196, 249, 255, 0.9);
+}
+
+.animationShadow{
+    animation: circleShadow 2s linear infinite;
+}
+
+@keyframes circleShadow {
+    0%,100%{
+    box-shadow: 0 0 20px aqua, 0 0 50px rgba(0, 255, 145, 0.627), 0 0 100px rgba(255, 255, 255, 0.9);
+    transform: rotate(360deg);
+
+    }
+    50%{
+        box-shadow: 0 0 30px rgb(255, 255, 255), 0 0 60px rgba(0, 255, 145, 0.825), 0 0 120px rgba(78, 243, 255, 0.613);
+
+    }
+}
+
+
+.content{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transform: rotateX(0deg) rotateY(0deg);
+    transform-origin: center;
+    transition: .1s;
+}
+
+.animationRotate{
+    animation: roundandround .5s infinite linear ;
+}
+
+.content > div{
+    width: 97%;
+    height: 97%;
+    border-radius: 50%;
+    border: 5px solid ;
+    border-color: white;
+    opacity: 0.7;
+    transform-style: preserve-3d;
+    transform-origin: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    filter: hue-rotate(0deg) brightness(150%);
+}
+
+.animationColors{
+    animation: colorCircles 5s linear infinite;
+
+}
+
+.content > .circleX{
+    transform: rotateX(90deg);
+}
+
+.content > .circleY{
+    transform: rotateY(90deg);
+}
+
+@keyframes roundandround {
+    0%{
+      transform: rotateX(0deg) rotateY(0deg);
+
+    }
+    100%{
+      transform: rotateX(360deg) rotateY(360deg);
+    }
+  }
+  
+
+  @keyframes colorCircles {
+    0%,100%{
+        border-color: rgb(255, 255, 255);
+    }
+    
+    50%{
+        border-color: rgb(0, 157, 94);
+    }
+   
+   
+  }
+
+  .buttons{
+    margin-top: 3%;
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+.pause{
+    background: transparent;
+    color: white;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.354);
+    border: none;
+    position: absolute;
+    left: 10%;
+    bottom: 10%;
+    font-size: 70px;
+    cursor: pointer;
+    outline: none;
+}
+
+.helpBlock{
+    font-size: 20px;
+    color: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-shadow: 0 0 5px white;
+    position: absolute;
+    bottom: -5%;
+    opacity: 0;
+    transition: 1s;
+}
+
+
+.pauseIcon{
+    width: 70px;
+    height: 92px;
+    position: relative;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    align-items: center;  
+}
+
+
+.pauseIcon::after,
+.pauseIcon::before{
+    content: '';
+    width: 14%;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.354);
+    margin-top: 12px;
+    height: 50%;
+    background: white;
+}
